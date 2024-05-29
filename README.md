@@ -1,8 +1,8 @@
 # LiquidacionDefinitiva
 
 ## Elaborado por:
-- Mayezly Tatiana Gafaro Boada
-- Miguer Ayala
+- Tatiana Gafaro 
+- Miguel Ayala
 
 ## ¿Qué es y para qué es?
 
