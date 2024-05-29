@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Menú Principal</h1>
+        <div class="btn-group" role="group" aria-label="Menu">
+            <button type="button" class="btn btn-primary" onclick="location.href='{{ url_for('buscar_worker') }}'">Buscar Worker</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='{{ url_for('eliminar_worker') }}'">Eliminar Worker</button>
+            <button type="button" class="btn btn-success" onclick="location.href='{{ url_for('modificar_worker') }}'">Modificar Worker</button>
+            <button type="button" class="btn btn-info" onclick="location.href='{{ url_for('insertar_worker') }}'">Insertar Worker</button>
+            <button type="button" class="btn btn-warning" onclick="location.href='{{ url_for('calcular_liquidacion') }}'">Calcular Liquidación</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='{{ url_for('inicializar_tablas') }}'">Inicializar Tablas</button>
+        </div>
+    </div>
+</body>
+
+</html>

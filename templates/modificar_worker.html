@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Worker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        button[type="submit"],
+        button[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            opacity: 0.8;
+        }
+
+        button[type="button"] {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        function validateForm() {
+            var id = document.getElementById("id").value;
+            var valor = document.getElementById("valor").value;
+            var campo = document.getElementById("campo").value;
+            var errorMessageId = document.getElementById("error-message-id");
+            var errorMessageValor = document.getElementById("error-message-valor");
+            var isValid = true;
+
+            if (isNaN(id) || id.trim() === "" || parseFloat(id) <= 0) {
+                errorMessageId.textContent = "El ID no puede ser cero o negativo.";
+                errorMessageId.style.display = "block";
+                isValid = false;
+            } else {
+                errorMessageId.style.display = "none";
+            }
+
+            if (campo === "salary_base" || campo === "months_worked") {
+                if (isNaN(valor) || valor.trim() === "" || parseFloat(valor) <= 0) {
+                    errorMessageValor.textContent = "El valor no puede ser cero o negativo para el campo seleccionado.";
+                    errorMessageValor.style.display = "block";
+                    isValid = false;
+                } else {
+                    errorMessageValor.style.display = "none";
+                }
+            } else {
+                if (isNaN(valor) || valor.trim() === "" || parseFloat(valor) < 0) {
+                    errorMessageValor.textContent = "El valor no puede ser negativo.";
+                    errorMessageValor.style.display = "block";
+                    isValid = false;
+                } else {
+                    errorMessageValor.style.display = "none";
+                }
+            }
+
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ mensaje }}</h1>
+        <form method="post" action="{{ url_for('modificar_worker') }}" onsubmit="return validateForm();">
+            <div class="form-group">
+                <label for="id">Ingrese el ID del trabajador a modificar:</label>
+                <input type="number" id="id" name="id" required>
+                <div id="error-message-id" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="campo">Seleccione el campo a modificar:</label>
+                <select id="campo" name="campo" required>
+                    <option value="salary_base">Salario base</option>
+                    <option value="months_worked">Meses trabajados</option>
+                    <option value="vacation_day">Días de vacaciones</option>
+                    <option value="hours_extras">Horas extras</option>
+                    <option value="extra_hours_nigth">Horas extras nocturnas</option>
+                    <option value="days_finish">Días para finalizar contrato</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="valor">Ingrese el nuevo valor:</label>
+                <input type="number" id="valor" name="valor" required>
+                <div id="error-message-valor" class="error-message"></div>
+            </div>
+            <button type="submit">Modificar</button>
+            <button type="button" onclick="location.href='{{ url_for('menu') }}'">Regresar al Menú Principal</button>
+        </form>
+    </div>
+</body>
+</html>

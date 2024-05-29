@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Detalle del Trabajador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Detalle del Trabajador</h1>
+        <table>
+            <tr>
+                <th>Atributo</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>Id</td>
+                <td>{{ worker.id }}</td>
+            </tr>
+            <tr>
+                <td>Salario base</td>
+                <td>{{ worker.salary_base }}</td>
+            </tr>
+            <tr>
+                <td>Meses trabajados</td>
+                <td>{{ worker.months_worked }}</td>
+            </tr>
+            <tr>
+                <td>Días de vacaciones que se le deben</td>
+                <td>{{ worker.vacation_days }}</td>
+            </tr>
+            <tr>
+                <td>Horas extras trabajadas</td>
+                <td>{{ worker.hours_extra }}</td>
+            </tr>
+            <tr>
+                <td>Horas extras nocturnas trabajadas</td>
+                <td>{{ worker.hours_extra_nigth }}</td>
+            </tr>
+            <tr>
+                <td>Tiempo que falta para culminar el contrato</td>
+                <td>{{ worker.days_finish }}</td>
+            </tr>
+        </table>
+        <h2>Valor a Pagar de Liquidación: {{ liquidacion }}</h2>
+        <button onclick="location.href='{{ url_for('menu') }}'">Regresar al Menú Principal</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Worker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+
+        button[type="submit"],
+        button[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            opacity: 0.8;
+        }
+
+        button[type="button"] {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        function validateForm() {
+            var id = document.getElementById("id").value;
+            var errorMessage = document.getElementById("error-message");
+            if (isNaN(id) || id.trim() === "") {
+                errorMessage.style.display = "block";
+                return false;
+            } else {
+                errorMessage.style.display = "none";
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ mensaje }}</h1>
+        <form method="post" action="{{ url_for('eliminar_worker') }}" onsubmit="return validateForm();">
+            <div class="form-group">
+                <label for="id">Ingrese el ID del trabajador a eliminar:</label>
+                <input type="text" id="id" name="id" required>
+                <div id="error-message" class="error-message">El ID debe ser un número.</div>
+            </div>
+            <button type="submit">Eliminar</button>
+            <button type="button" onclick="location.href='{{ url_for('menu') }}'">Regresar al Menú Principal</button>
+        </form>
+    </div>
+</body>
+</html>
