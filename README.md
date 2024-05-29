@@ -1,6 +1,6 @@
 # LiquidacionDefinitiva
 
-##Elaborado por:
+## Elaborado por:
 - Mayezly Tatiana Gafaro Boada
 - Miguer Ayala
 
